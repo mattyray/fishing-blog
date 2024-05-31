@@ -1,0 +1,17 @@
+<!-- templates\home.html-->
+{% extends 'base.html' %}
+{% block content %}
+<h1>Origin of a Cripple</h1>
+{% for post in post_list %}
+<div class="post-entry">
+    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+    <p>
+        {% if post.body|length > 500 %}
+            {{ post.body|slice:":500" }}...
+        {% else %}
+            {{ post.body }}
+        {% endif %}
+    </p>
+</div>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,22 @@
+<!-- templates/base.html-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+    <title>Fishing Stories</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'home' %}">Matt's Story Blog</a></h1>
+    </header>
+    <div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+
+</html>
