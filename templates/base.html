@@ -1,4 +1,4 @@
-<!-- templates/base.html-->
+<!-- root\templates/base.html-->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en-US">
@@ -8,11 +8,25 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
     <title>Fishing Stories</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="icon" href="{% static 'blowFish.png' %}" type="image/x-icon">
 </head>
 <body>
     <header>
-        <h1><a href="{% url 'home' %}">Matt's Story Blog</a></h1>
-    </header>
+        <div class="nav-left">
+            <h1><a href="{% url 'home' %}">Blog Home</a> </h1>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'new_post' %}">Add New Post</a>
+        </div>
+        </header>
+        {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}</p>
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+        {% else %}
+        <p>You're not logged in</p>
+        <a href="{% url 'login' %}">Log In</a>
+        <a href="{% url 'signup' %}">Sign In</a>
+        {% endif %}
     <div>
         {% block content %}
         {% endblock content %}
